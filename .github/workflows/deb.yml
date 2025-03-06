@@ -97,14 +97,21 @@ jobs:
       run: cd fex; docker build -t fexpe .
 
     - name: Extract package
-      run: docker run --rm fexpe cat /opt/deb/hangover-libwow64fex_${{ env.HOVERSION }}_arm64.deb > hangover-libwow64fex_${{ env.HOVERSION }}_arm64.deb
+      run: |
+        docker run fexpe cat /opt/deb/hangover-libwow64fex_${{ env.HOVERSION }}_arm64.deb > hangover-libwow64fex_${{ env.HOVERSION }}_arm64.deb
+        docker run --rm fexpe cat /opt/fex/build/generated/FEX.1.gz > FEX.1.gz
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
         name: hangover-libwow64fex_${{ env.HOVERSION }}_arm64.deb
         path: hangover-libwow64fex_${{ env.HOVERSION }}_arm64.deb
-
+    
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: FEX.1.gz
+        path: FEX.1.gz
 
   fex-pe-ec:
     needs: foundations
