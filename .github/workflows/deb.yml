@@ -176,7 +176,7 @@ jobs:
     - name: Checkout DXVK
       uses: actions/checkout@v4
       with:
-        repository: AndreRH/dxvk
+        repository: cjxyz/dxvk
         fetch-tags: true
         submodules: true
         fetch-depth: 16
