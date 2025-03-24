@@ -150,8 +150,6 @@ jobs:
         cp fex/LICENSE fex/DEBIAN/copyright
         sed -i "s/HOVERSION/${HOVERSION}/g" fex/Dockerfile
         sed -i "s/HOVERSION/${HOVERSION}/g" fex/DEBIAN/control
-        sed -i "s/starting FEX based/starting FEX (Hangover ${HOVERSION}) based/g" fex/Source/Windows/ARM64EC/Module.cpp
-        sed -i "s/starting FEX based/starting FEX (Hangover ${HOVERSION}) based/g" fex/Source/Windows/WOW64/Module.cpp
         nproc
 
     - name: Build package
@@ -212,7 +210,6 @@ jobs:
       with:
         name: dxvk-${{ env.DXVKVERSION }}.tar.gz
         path: dxvk-${{ env.DXVKVERSION }}.tar.gz
-
 
   qemu:
     needs: foundations
